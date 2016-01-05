@@ -1,0 +1,97 @@
+var miniQuery = function(selector){
+  selector = selector || "string"
+
+  var SweetSelector = function(){
+    var firstChar = selector.slice(0,1)
+    var substring = selector.substring(1,selector.length)
+    if(firstChar==='#'){
+      return document.getElementById(substring)
+    } else if(firstChar==='.'){
+      return document.getElementsByClassName(substring)
+    } else {
+      return document.getElementsByTagName(selector)
+    }
+  };
+
+  var selected = SweetSelector(selector);
+
+  return {
+    hide: function(){
+      if(selected instanceof HTMLCollection) {
+        for(var i=0; i<selected.length; i++){
+          selected[i].style.display = "none"
+        }
+      } else {
+        selected.style.display="none"
+      }
+    },
+
+    show: function(){
+      if(selected instanceof HTMLCollection) {
+        for(var i=0; i<selected.length; i++){
+          selected[i].style.removeProperty("display")
+        }
+      } else {
+        selected.style.removeProperty("display")
+      }
+    },
+
+    addClass: function(className){
+      if(selected instanceof HTMLCollection) {
+        for(var i=0; i<selected.length; i++){
+          selected[i].classList.add(className)
+        }
+      } else {
+        selected.classList.add(className)
+      }
+    },
+
+    removeClass: function(className){
+      var length = selected.length
+      if(selected instanceof HTMLCollection) {
+         for(var i=length-1; i>=0; i--){
+         selected[i].classList.remove(className)
+        }
+      } else {
+        selected.classList.remove(className)
+      }
+    },
+// Event Dispatching
+    on: function(eventName, callBack){
+      selected.addEventListener(eventName, callBack, false);
+    },
+    trigger: function(eventName){
+      var event = new Event(eventName);
+      selected.dispatchEvent(event);
+    },
+
+//Ajax request
+    request: function(options) {
+      var newPromise = new Promise(function(resolve, reject){
+      var ajaxRequest = new XMLHttpRequest();
+      ajaxRequest.open(options.type, options.url, true)
+      ajaxRequest.onload = function(){
+        if(ajaxRequest.status >= 200 && ajaxRequest.status < 400) {
+          resolve(ajaxRequest.response);
+        } else {
+        reject(ajaxRequest.response);
+        }
+      }
+      ajaxRequest.send()
+      console.log(ajaxRequest.responseXML)
+      })
+      newPromise.then(function(response){
+      console.log('success');
+      }, function(){
+      console.log('failure');
+     });
+    }
+  }
+}
+
+var $ = function(selector) {
+  return miniQuery(selector)
+}
+
+
+
