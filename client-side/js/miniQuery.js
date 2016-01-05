@@ -59,6 +59,8 @@ var miniQuery = (function(tag){
               }
               if (xhr.status !== 200){
                 console.log("HERE 200")
+                console.log(xhr.response)
+                console.log(xhr)
                 return reject(xhr.response);
               }
             resolve(xhr.response);
