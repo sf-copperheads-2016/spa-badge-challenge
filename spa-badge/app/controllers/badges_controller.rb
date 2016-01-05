@@ -1,23 +1,13 @@
 class BadgesController < ApplicationController
 
-  def index
-  end
-
-  def new
-  end
-
   def create
-  end
-
-  def show
-  end
-
-  def edit
+    @badge = Badge.new(params[:title])
+    render json: @badge
   end
 
   def update
   end
 
-  def destroy
-  end
+  private
+
 end
