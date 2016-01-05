@@ -14,8 +14,21 @@ var miniQuery = function(selector){
   };
 
   var selected = SweetSelector(selector);
-
   return {
+    html: function(){
+      if(selected instanceof HTMLCollection){
+        for(var i=0; i<selected.length; i++){
+          return selected[i].innerHTML;
+        }
+      } else {
+        return selected.innerHTML;
+      }
+    },
+
+    sethtml: function(object){
+      selected[0].innerHTML = object;
+    },
+
     hide: function(){
       if(selected instanceof HTMLCollection) {
         for(var i=0; i<selected.length; i++){
@@ -58,33 +71,28 @@ var miniQuery = function(selector){
     },
 // Event Dispatching
     on: function(eventName, callBack){
-      selected.addEventListener(eventName, callBack, false);
+      selected[0].addEventListener(eventName, callBack, false);
     },
     trigger: function(eventName){
       var event = new Event(eventName);
-      selected.dispatchEvent(event);
+      selected[0].dispatchEvent(event);
     },
 
 //Ajax request
     request: function(options) {
       var newPromise = new Promise(function(resolve, reject){
-      var ajaxRequest = new XMLHttpRequest();
-      ajaxRequest.open(options.type, options.url, true)
-      ajaxRequest.onload = function(){
-        if(ajaxRequest.status >= 200 && ajaxRequest.status < 400) {
-          resolve(ajaxRequest.response);
-        } else {
-        reject(ajaxRequest.response);
+        var ajaxRequest = new XMLHttpRequest();
+        ajaxRequest.open(options.type, options.url, true)
+        ajaxRequest.onload = function(){
+          if(ajaxRequest.status >= 200 && ajaxRequest.status < 400) {
+            resolve(ajaxRequest.response);
+          } else {
+          reject(ajaxRequest.response);
+          }
         }
-      }
-      ajaxRequest.send()
-      console.log(ajaxRequest.responseXML)
-      })
-      newPromise.then(function(response){
-      console.log('success');
-      }, function(){
-      console.log('failure');
-     });
+        ajaxRequest.send()
+        })
+      return newPromise
     }
   }
 }
