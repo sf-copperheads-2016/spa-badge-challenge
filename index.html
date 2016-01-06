@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <title>SPABadge</title>
+</head>
+<body>
+  <script id="index" type="text/x-handlebars-template">
+
+    {{#each students}}
+      <p><a href="{{id}}">{{name}}</a></p>
+    {{/each}}
+
+  </script>
+
+  <script id="show" type="text/x-handlebars-template">
+    <h1>{{name}}</h1>
+        {{#each badges}}
+           <p>{{description}}
+           <a class="upvote" href="{{id}}"><img src="img/upvote.gif"></a><a class="downvote" href="{{id}}"><img src="img/downvote.gif"></a>
+           {{score}}
+           </p>
+        {{/each}}
+    <div class="add-badge">
+      <h3> Add a Badge: </h3>
+      <form action="#">
+        <input type="hidden" name="student_id" value="{{id}}" />
+        <input type="text" name="description" />
+        <input type="image" src="img/add_button.png" alt="Add Slogan" />
+      </form>
+    </div>
+
+  </script>
+
+  <div class="content-placeholder"></div>
+
+</body>
+  <script src="js/miniquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+  <script src="js/app.js"></script>
+</html>
