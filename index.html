@@ -9,10 +9,18 @@
   <script id="index" type="text/x-handlebars-template">
 
     {{#each students}}
-      <p><a href="#">{{name}}</a></p>
+      <p><a href="{{id}}">{{name}}</a></p>
     {{/each}}
 
   </script>
+
+  <script id="show" type="text/x-handlebars-template">
+    <h1>{{name}}</h1>
+        {{#each badges}}
+           <p>{{description}}</p>
+        {{/each}}
+  </script>
+
   <div class="content-placeholder"></div>
 
 </body>
