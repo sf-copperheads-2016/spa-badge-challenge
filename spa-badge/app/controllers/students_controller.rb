@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
 
   def index
-    @students = Student.all
+    list_students
     render json: @students
   end
 
@@ -22,7 +22,7 @@ class StudentsController < ApplicationController
   def update
     find_student
     if @student.update(student_params)
-      render json: student
+      render json: @student
     else
       render json: @student.errors
     end
@@ -43,4 +43,11 @@ class StudentsController < ApplicationController
     params.require(:student).permit(:name)
   end
 
+  def list_students
+    @students = Student.all
+    @list_of_names = []
+    @students.each do |name|
+      @list_of_names << name.name
+    end
+  end
 end
