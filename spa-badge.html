@@ -12,9 +12,11 @@
       <h1> SPA Badge </h1>
     </div>
     <h1> SF Teachers and Mentors </h1>
-      <ul>
+      <ul id="teacher-list">
         <script id="teachers-template" type="text/x-handlebars-template">
+        {{#each teacher}}
           <li><a href='#'>{{ name }}</a></li>
+        {{/each}}
         </script>
         <li><a href="#">Brick</a></li>
         <li><a href="#">Hunter</li>
