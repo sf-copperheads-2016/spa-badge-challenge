@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 
   <title>SPABadge</title>
 </head>
@@ -17,7 +18,10 @@
   <script id="show" type="text/x-handlebars-template">
     <h1>{{name}}</h1>
         {{#each badges}}
-           <p>{{description}}</p>
+           <p>{{description}}
+           <a class="upvote" href="#"><img src="img/upvote.gif"></a><a class="downvote" href="#"><img src="img/downvote.gif"></a>
+           {{score}}
+           </p>
         {{/each}}
   </script>
 

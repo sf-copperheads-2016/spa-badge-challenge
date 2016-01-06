@@ -8,7 +8,10 @@ class StudentsController < ApplicationController
   end
 
   def show
-    render json: @student
+    render json:{
+      student: @student, badges: @student.badges
+    }
+
   end
 
   def create

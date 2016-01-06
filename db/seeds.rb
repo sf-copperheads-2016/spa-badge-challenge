@@ -30,3 +30,4 @@ copperheads = [
 copperheads.each do |name|
   Student.create(name: name)
 end
+Badge.create(description: "You didn't die!!", student_id: 1)

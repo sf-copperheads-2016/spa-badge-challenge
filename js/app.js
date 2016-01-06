@@ -31,19 +31,15 @@ var indexTemplate = function() {
         type: 'GET',
       }).then(function(response){
         var student = JSON.parse(response)
-        $().request({
-          url: 'http://localhost:3000/get_badges/'+student.id,
-          type: 'GET',
-        }).then(function(response){
-          var badges = JSON.parse(response)
-          var context={
-            "name": student.name,
-            "badges": badges
-          };
-          var theCompiledHtml = theTemplate(context);
-          $('.content-placeholder').sethtml(theCompiledHtml);
-        })
-
+        var parsed = JSON.parse(response)
+        var student = parsed.student
+        var badges = parsed.badges
+        context={
+          "name": student.name,
+          "badges": badges
+        }
+        var theCompiledHtml = theTemplate(context);
+        $('.content-placeholder').sethtml(theCompiledHtml);
       })
     }
     $('a').on("click", showTemplate)
