@@ -36,11 +36,6 @@ class StudentsController < ApplicationController
     head :no_content
   end
 
-  def get_badges
-    student = Student.find(params[:id])
-    render json: student.badges
-  end
-
   private
   def set_student
     @student = Student.find(params[:id])

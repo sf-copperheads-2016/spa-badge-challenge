@@ -94,7 +94,7 @@ var miniQuery = function(selector){
     request: function(options) {
       var newPromise = new Promise(function(resolve, reject){
         var ajaxRequest = new XMLHttpRequest();
-        ajaxRequest.open(options.type, options.url, true)
+        ajaxRequest.open(options.type, options.url, options.dataType, options.data, true)
         ajaxRequest.onload = function(){
           if(ajaxRequest.status >= 200 && ajaxRequest.status < 400) {
             resolve(ajaxRequest.response);
