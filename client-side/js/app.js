@@ -20,17 +20,16 @@ window.onload = function () {
         var a = JSON.parse(response)
         var b = a.id;
         var c = "#" + b.toString();
-        console.log(c)
-        console.log("HERHEHREHRHER")
         var x = document.getElementById(b.toString());
         if (x.style.display == "none"){
           x.style.display = "block"
+          miniQuery('li').hide();
         } else {
           x.style.display = "none"
+          miniQuery('li').show();
         }
       })
      });
-      // miniQuery('a').trigger('click');
   });
 }
 
