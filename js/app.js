@@ -45,15 +45,12 @@ var indexTemplate = function() {
           event.preventDefault();
           var id = this.getAttribute("href")
           var value=this.className == "upvote" ? 1 : -1
-
           $().request({
             type: 'POST',
             url: 'http://localhost:3000/votes?value='+value+'&badge_id='+id
           }).then(function(){
             showTemplate(event, id)
           })
-
-
         }
         var createBadge = function(event){
            event.preventDefault();
@@ -62,7 +59,6 @@ var indexTemplate = function() {
            $().request({
             type: "POST",
             url: 'http://localhost:3000/badges?description='+description+'&student_id='+id
-
            }).then(function(){
             showTemplate(event, id)
           })
@@ -74,7 +70,6 @@ var indexTemplate = function() {
     }
     $('a').on("click", showTemplate)
   })
-
 };
 
 
