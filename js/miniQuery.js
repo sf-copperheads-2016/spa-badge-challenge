@@ -198,7 +198,7 @@ miniQuery.ready = function(callback) {
   if (document.readyState != 'loading') {
     callback();
   } else {
-    document.addEventListener('DOMContentReady', callback);
+    document.addEventListener('DOMContentLoaded', callback);
   }
 }
 

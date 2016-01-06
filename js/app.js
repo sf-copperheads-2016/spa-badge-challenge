@@ -1,5 +1,3 @@
-// $.ready(function() {
-//   console.log('hi');
-// });
-
-console.log($('a'));
+$.ready(function() {
+  console.log('hi');
+});
