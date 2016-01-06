@@ -161,6 +161,14 @@ var miniQuery = function(selector) {
     EventDispatcher.trigger(selector, eventName);
   };
 
+  exports.ready = function(callback) {
+    if (document.readyState != 'loading') {
+      callback();
+    } else {
+      document.addEventListener('DOMContentReady', callback);
+    }
+  }
+
   return exports;
 }
 
