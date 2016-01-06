@@ -612,3 +612,237 @@ Started GET "/students/" for ::1 at 2016-01-05 15:45:12 -0800
 Processing by StudentsController#index as */*
   [1m[36mStudent Load (0.7ms)[0m  [1mSELECT "students".* FROM "students"[0m
 Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/students/" for ::1 at 2016-01-05 15:46:26 -0800
+Processing by StudentsController#index as */*
+  [1m[35mStudent Load (0.3ms)[0m  SELECT "students".* FROM "students"
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/students/" for ::1 at 2016-01-05 15:47:10 -0800
+Processing by StudentsController#index as */*
+  [1m[36mStudent Load (0.3ms)[0m  [1mSELECT "students".* FROM "students"[0m
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/students/" for ::1 at 2016-01-05 15:47:37 -0800
+Processing by StudentsController#index as */*
+  [1m[35mStudent Load (0.3ms)[0m  SELECT "students".* FROM "students"
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/students/" for ::1 at 2016-01-05 15:48:04 -0800
+Processing by StudentsController#index as */*
+  [1m[36mStudent Load (0.4ms)[0m  [1mSELECT "students".* FROM "students"[0m
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/students/" for ::1 at 2016-01-05 15:48:06 -0800
+Processing by StudentsController#index as */*
+  [1m[35mStudent Load (0.3ms)[0m  SELECT "students".* FROM "students"
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/students/" for ::1 at 2016-01-05 15:48:27 -0800
+Processing by StudentsController#index as */*
+  [1m[36mStudent Load (0.3ms)[0m  [1mSELECT "students".* FROM "students"[0m
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/students/" for ::1 at 2016-01-05 15:48:59 -0800
+Processing by StudentsController#index as */*
+  [1m[35mStudent Load (0.4ms)[0m  SELECT "students".* FROM "students"
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/students/" for ::1 at 2016-01-05 15:50:18 -0800
+Processing by StudentsController#index as */*
+  [1m[36mStudent Load (0.3ms)[0m  [1mSELECT "students".* FROM "students"[0m
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/students/" for ::1 at 2016-01-05 15:52:43 -0800
+Processing by StudentsController#index as */*
+  [1m[35mStudent Load (0.3ms)[0m  SELECT "students".* FROM "students"
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/students/" for ::1 at 2016-01-05 15:57:52 -0800
+Processing by StudentsController#index as */*
+  [1m[36mStudent Load (0.3ms)[0m  [1mSELECT "students".* FROM "students"[0m
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (5067.5ms)[0m  [1mDROP DATABASE IF EXISTS "myApp_development"[0m
+PG::ObjectInUse: ERROR:  database "myApp_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+: DROP DATABASE IF EXISTS "myApp_development"
+  [1m[35m (239.0ms)[0m  DROP DATABASE IF EXISTS "myApp_test"
+  [1m[36m (0.7ms)[0m  [1mCREATE DATABASE "myApp_development" ENCODING = 'unicode'[0m
+PG::DuplicateDatabase: ERROR:  database "myApp_development" already exists
+: CREATE DATABASE "myApp_development" ENCODING = 'unicode'
+  [1m[35m (425.3ms)[0m  CREATE DATABASE "myApp_test" ENCODING = 'unicode'
+  [1m[36mSQL (12.8ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (102.4ms)[0m  DROP TABLE "badges" CASCADE
+  [1m[36m (7.7ms)[0m  [1mCREATE TABLE "badges" ("id" serial primary key, "description" text, "student_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (2.8ms)[0m  DROP TABLE "students" CASCADE
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE "students" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  DROP TABLE "votes" CASCADE
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "votes" ("id" serial primary key, "value" integer, "badge_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.8ms)[0m  CREATE TABLE "badges" ("id" serial primary key, "description" text, "student_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "students" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "votes" ("id" serial primary key, "value" integer, "badge_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (2.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.6ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (30.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160105180945')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160105180838')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160105180912')
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Andrew Blum"], ["created_at", "2016-01-06 00:03:22.109492"], ["updated_at", "2016-01-06 00:03:22.109492"]]
+  [1m[35m (15.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Armani Saldana"], ["created_at", "2016-01-06 00:03:22.138823"], ["updated_at", "2016-01-06 00:03:22.138823"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Cecilia 'CJ' Joulain"], ["created_at", "2016-01-06 00:03:22.141306"], ["updated_at", "2016-01-06 00:03:22.141306"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Danielle Cameron"], ["created_at", "2016-01-06 00:03:22.143304"], ["updated_at", "2016-01-06 00:03:22.143304"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Daniel Woznicki"], ["created_at", "2016-01-06 00:03:22.145554"], ["updated_at", "2016-01-06 00:03:22.145554"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Deanna Warren"], ["created_at", "2016-01-06 00:03:22.147655"], ["updated_at", "2016-01-06 00:03:22.147655"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eric Dell'Aringa"], ["created_at", "2016-01-06 00:03:22.149609"], ["updated_at", "2016-01-06 00:03:22.149609"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Gouron Paul"], ["created_at", "2016-01-06 00:03:22.151596"], ["updated_at", "2016-01-06 00:03:22.151596"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Isaac Lee"], ["created_at", "2016-01-06 00:03:22.153766"], ["updated_at", "2016-01-06 00:03:22.153766"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Jeremy Powell"], ["created_at", "2016-01-06 00:03:22.156015"], ["updated_at", "2016-01-06 00:03:22.156015"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Joseph Marion"], ["created_at", "2016-01-06 00:03:22.158437"], ["updated_at", "2016-01-06 00:03:22.158437"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Joshua Kim"], ["created_at", "2016-01-06 00:03:22.160273"], ["updated_at", "2016-01-06 00:03:22.160273"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Kai Huang"], ["created_at", "2016-01-06 00:03:22.162047"], ["updated_at", "2016-01-06 00:03:22.162047"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Kim Allen"], ["created_at", "2016-01-06 00:03:22.163737"], ["updated_at", "2016-01-06 00:03:22.163737"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Kyle Smith"], ["created_at", "2016-01-06 00:03:22.166336"], ["updated_at", "2016-01-06 00:03:22.166336"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Mark Janzer"], ["created_at", "2016-01-06 00:03:22.168629"], ["updated_at", "2016-01-06 00:03:22.168629"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Nicole Yee"], ["created_at", "2016-01-06 00:03:22.170839"], ["updated_at", "2016-01-06 00:03:22.170839"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Peter Wiebe"], ["created_at", "2016-01-06 00:03:22.173178"], ["updated_at", "2016-01-06 00:03:22.173178"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Steven Broderick"], ["created_at", "2016-01-06 00:03:22.175145"], ["updated_at", "2016-01-06 00:03:22.175145"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (164.4ms)[0m  [1mDROP DATABASE IF EXISTS "myApp_development"[0m
+  [1m[35m (116.7ms)[0m  DROP DATABASE IF EXISTS "myApp_test"
+  [1m[36m (289.2ms)[0m  [1mCREATE DATABASE "myApp_development" ENCODING = 'unicode'[0m
+  [1m[35m (369.0ms)[0m  CREATE DATABASE "myApp_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.2ms)[0m  CREATE TABLE "badges" ("id" serial primary key, "description" text, "student_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "students" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.1ms)[0m  CREATE TABLE "votes" ("id" serial primary key, "value" integer, "badge_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.7ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160105180945')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160105180838')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160105180912')
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.3ms)[0m  CREATE TABLE "badges" ("id" serial primary key, "description" text, "student_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "students" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.1ms)[0m  CREATE TABLE "votes" ("id" serial primary key, "value" integer, "badge_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.5ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160105180945')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160105180838')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160105180912')
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Andrew Blum"], ["created_at", "2016-01-06 00:03:50.611288"], ["updated_at", "2016-01-06 00:03:50.611288"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Armani Saldana"], ["created_at", "2016-01-06 00:03:50.617189"], ["updated_at", "2016-01-06 00:03:50.617189"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Cecilia 'CJ' Joulain"], ["created_at", "2016-01-06 00:03:50.619454"], ["updated_at", "2016-01-06 00:03:50.619454"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Danielle Cameron"], ["created_at", "2016-01-06 00:03:50.621679"], ["updated_at", "2016-01-06 00:03:50.621679"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Daniel Woznicki"], ["created_at", "2016-01-06 00:03:50.623762"], ["updated_at", "2016-01-06 00:03:50.623762"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Deanna Warren"], ["created_at", "2016-01-06 00:03:50.626168"], ["updated_at", "2016-01-06 00:03:50.626168"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eric Dell'Aringa"], ["created_at", "2016-01-06 00:03:50.628459"], ["updated_at", "2016-01-06 00:03:50.628459"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Gouron Paul"], ["created_at", "2016-01-06 00:03:50.630165"], ["updated_at", "2016-01-06 00:03:50.630165"]]
+  [1m[36m (15.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Isaac Lee"], ["created_at", "2016-01-06 00:03:50.648670"], ["updated_at", "2016-01-06 00:03:50.648670"]]
+  [1m[35m (14.7ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Jeremy Powell"], ["created_at", "2016-01-06 00:03:50.666781"], ["updated_at", "2016-01-06 00:03:50.666781"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Joseph Marion"], ["created_at", "2016-01-06 00:03:50.669794"], ["updated_at", "2016-01-06 00:03:50.669794"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Joshua Kim"], ["created_at", "2016-01-06 00:03:50.672861"], ["updated_at", "2016-01-06 00:03:50.672861"]]
+  [1m[36m (13.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Kai Huang"], ["created_at", "2016-01-06 00:03:50.688840"], ["updated_at", "2016-01-06 00:03:50.688840"]]
+  [1m[35m (14.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Kim Allen"], ["created_at", "2016-01-06 00:03:50.705962"], ["updated_at", "2016-01-06 00:03:50.705962"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Kyle Smith"], ["created_at", "2016-01-06 00:03:50.708863"], ["updated_at", "2016-01-06 00:03:50.708863"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Mark Janzer"], ["created_at", "2016-01-06 00:03:50.711736"], ["updated_at", "2016-01-06 00:03:50.711736"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Nicole Yee"], ["created_at", "2016-01-06 00:03:50.714568"], ["updated_at", "2016-01-06 00:03:50.714568"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Peter Wiebe"], ["created_at", "2016-01-06 00:03:50.717455"], ["updated_at", "2016-01-06 00:03:50.717455"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Steven Broderick"], ["created_at", "2016-01-06 00:03:50.720414"], ["updated_at", "2016-01-06 00:03:50.720414"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+
+
+Started GET "/students/" for ::1 at 2016-01-05 16:04:08 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#index as */*
+  [1m[35mStudent Load (0.6ms)[0m  SELECT "students".* FROM "students"
+Completed 200 OK in 20ms (Views: 10.7ms | ActiveRecord: 3.5ms)

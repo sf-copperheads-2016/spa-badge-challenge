@@ -9,19 +9,17 @@ var indexTemplate = function() {
     type: 'GET',
 
   }).then(function(response){
-    console.log(response);
-  })
-
-  // Define our data object
-  var context={
-    "student": "London",
+    var parsed = JSON.parse(response)
+    var context={
+      "students": parsed,
   };
-
   // Pass our data to the template
-  var theCompiledHtml = theTemplate(context);
+    var theCompiledHtml = theTemplate(context);
 
   // Add the compiled html to the page
   $('.content-placeholder').sethtml(theCompiledHtml);
+  })
+
 };
 
 $('div').on("loadIndex", indexTemplate)

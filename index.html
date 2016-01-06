@@ -7,8 +7,11 @@
 </head>
 <body>
   <script id="index" type="text/x-handlebars-template">
-    <p>This is {{student}}
-    </p>
+
+    {{#each students}}
+      <p>This is {{name}}</p>
+    {{/each}}
+
   </script>
   <div class="content-placeholder"></div>
 

@@ -5,9 +5,28 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-dan = Student.create(name: "Dan")
-badge = Badge.create(description: "NEATO")
-vote = Vote.create(value: 1)
-badge.votes << vote
-dan.badges << badge
 
+copperheads = [
+"Andrew Blum",
+"Armani Saldana",
+"Cecilia 'CJ' Joulain",
+"Danielle Cameron",
+"Daniel Woznicki",
+"Deanna Warren",
+"Eric Dell'Aringa",
+"Gouron Paul",
+"Isaac Lee",
+"Jeremy Powell",
+"Joseph Marion",
+"Joshua Kim",
+"Kai Huang",
+"Kim Allen",
+"Kyle Smith",
+"Mark Janzer",
+"Nicole Yee",
+"Peter Wiebe",
+"Steven Broderick",
+]
+copperheads.each do |name|
+  Student.create(name: name)
+end
