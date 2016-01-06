@@ -9,13 +9,15 @@
     <h1> SPA Badge </h1>
     <h2>Copperhead Students</h2>
     <div id="nameoutput">
+      <script id="person-template" type="text/x-handlebars-template">
+        <ul class="people_list">
+        {{#each person}}
+          <li><a href="#{{this.id}}">{{this.name}}</a></li>
+          <p id="{{this.id}}">WE ARE THE Badges</p>
+        {{/each}}
+        </ul>
+      </script>
     </div>
-    <script id="person-template" type="text/x-handlebars-template">
-      <ul class="people_list">
-      {{#each person}}
-        <li><a href="#" + {{this.id}}>{{this.name}}</a></li>
-      {{/each}}
-      </ul>
-    </script>
+
   </body>
 </html>
