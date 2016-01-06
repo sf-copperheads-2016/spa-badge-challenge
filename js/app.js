@@ -35,7 +35,8 @@ var indexTemplate = function() {
         var badges = parsed.badges
         context={
           "name": student.name,
-          "badges": badges
+          "badges": badges,
+          "id": student.id
         }
         var theCompiledHtml = theTemplate(context);
         $('.content-placeholder').sethtml(theCompiledHtml);
@@ -51,9 +52,24 @@ var indexTemplate = function() {
           }).then(function(){
             showTemplate(event, id)
           })
+
+
+        }
+        var createBadge = function(event){
+           event.preventDefault();
+           var id = this.elements["student_id"].value
+           var description = this.elements["description"].value
+           $().request({
+            type: "POST",
+            url: 'http://localhost:3000/badges?description='+description+'&student_id='+id
+
+           }).then(function(){
+            showTemplate(event, id)
+          })
         }
         $('.upvote').on('click', createVote)
         $('.downvote').on('click', createVote)
+        $('form').on('submit', createBadge)
       })
     }
     $('a').on("click", showTemplate)
