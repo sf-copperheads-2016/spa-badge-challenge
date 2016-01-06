@@ -15,6 +15,12 @@ var miniQuery = function(selector){
 
   var selected = SweetSelector(selector);
   return {
+    ready: function(callBack){
+      window.addEventListener("load", function(event) {
+        callBack();
+      });
+    },
+
     html: function(){
       if(selected instanceof HTMLCollection){
         for(var i=0; i<selected.length; i++){
@@ -71,7 +77,13 @@ var miniQuery = function(selector){
     },
 // Event Dispatching
     on: function(eventName, callBack){
-      selected[0].addEventListener(eventName, callBack, false);
+      if(selected instanceof HTMLCollection){
+         for(var i=0; i<selected.length; i++){
+            selected[i].addEventListener(eventName, callBack, false);
+          }
+      } else {
+        selected.addEventListener(eventName, callBack, false);
+      }
     },
     trigger: function(eventName){
       var event = new Event(eventName);

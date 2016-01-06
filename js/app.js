@@ -1,3 +1,8 @@
+$().ready(function(){
+  $('body').on("loadIndex", indexTemplate)
+  $('body').trigger("loadIndex")
+})
+
 var indexTemplate = function() {
   // Grab the template script
   var theTemplateScript = $("#index").html();
@@ -12,16 +17,21 @@ var indexTemplate = function() {
     var parsed = JSON.parse(response)
     var context={
       "students": parsed,
-  };
+    };
   // Pass our data to the template
     var theCompiledHtml = theTemplate(context);
-
   // Add the compiled html to the page
-  $('.content-placeholder').sethtml(theCompiledHtml);
+    $('.content-placeholder').sethtml(theCompiledHtml);
+  }).then(function(){
+    var showTemplate = function(event){
+      event.preventDefault();
+      console.log("Show Template Test")
+    }
+    $('a').on("click", showTemplate)
+
   })
 
 };
 
-$('div').on("loadIndex", indexTemplate)
-$('div').trigger("loadIndex")
+
 
