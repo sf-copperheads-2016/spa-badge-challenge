@@ -42,6 +42,7 @@ var miniQuery = (function(tag){
   on: function(event, eventFunc) {
      for(var i = 0; i < element.length; i++) {
       element[i].addEventListener(event, eventFunc);
+      console.log("I GOT TO THE METHOD")
     }
   },
   trigger: function(event) {

@@ -1,21 +1,33 @@
-// miniQuery("h2").show();
+window.onload = function () {
+  var source = document.getElementById("person-template").innerHTML;
+  var template = Handlebars.compile(source);
 
-miniQuery("h1").ajax({
-  type: "GET",
-  url: "http://localhost:3000/students"
-}).then(function(data){
-  console.log(data)
-  var person = JSON.parse(data)
-  for(i=0;i<person.length;i++){
-    var ul = document.getElementsByTagName('ul')[0]
-    var li = document.createElement('li');
-    li.appendChild(document.createTextNode(person[i].name));
-    ul.appendChild(li);
-  }
-    // document.getElementsByTagName('ul')[0].innerHTML = person[i].name
+  miniQuery("h1").ajax({
+    type: "GET",
+    url: "http://localhost:3000/students"
+  }).then(function(data){
+    var person = JSON.parse(data)
+    var context = {person};
+    var output = template(context);
+    document.getElementById("nameoutput").innerHTML = output;
+  }).catch(function(){
+    console.log()
+  });
+  console.log("BEFORE AJAX");
 
-  // document.ul.appendChild(document.createElement("<li>" + person[0].name + "</li>"));
-  console.log(data)
-}).catch(function(){
-  console.log()
-})
+  miniQuery("a").on('click', function(){
+    console.log("IN AJAx")
+    console.log(this)
+      miniQuery("a").ajax({
+        type: "GET",
+        url: "http://localhost:3000/students/"+ href
+      }).then(function(data){
+      console.log(data)
+    }).catch(function(){
+      console.log("ERRROS")
+    })
+  });
+
+  miniQuery("a").trigger("click");
+
+}

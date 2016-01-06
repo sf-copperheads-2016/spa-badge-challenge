@@ -1,9 +1,26 @@
-
-<h1> SPA Badge </h1>
-<h2>Copperhead Students</h2>
-
-<ul>
-</ul>
-<script src="js/miniQuery.js"></script>
-<script src="js/app.js"></script>
-
+<html>
+  <body>
+    <h1> SPA Badge </h1>
+    <h2>Copperhead Students</h2>
+    <div id="nameoutput">
+    </div>
+    <script id="person-template" type="text/x-handlebars-template">
+      <p>{{person}}</p>
+      <ul class="people_list">
+      {{#each person}}
+        <li>{{this}}</li>
+      {{/each}}
+      </ul>
+    </script>
+    <script src="handlebars.js"></script>
+    <script>
+    window.onload = function () {
+      var source = document.getElementById("person-template").innerHTML;
+      var template = Handlebars.compile(source);
+      var context = {name: "John"};
+      var output = template(context);
+      document.getElementById("nameoutput").innerHTML = output;
+    }
+    </script>
+  </body>
+</html>
