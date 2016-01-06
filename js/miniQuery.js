@@ -161,14 +161,6 @@ var miniQuery = function(selector) {
     EventDispatcher.trigger(selector, eventName);
   };
 
-  exports.ready = function(callback) {
-    if (document.readyState != 'loading') {
-      callback();
-    } else {
-      document.addEventListener('DOMContentReady', callback);
-    }
-  }
-
   return exports;
 }
 
@@ -179,27 +171,35 @@ miniQuery.ajax = function(params) {
     var success = params.success;
     var fail = params.fail;
     var ajaxProm = new Promise(function(resolve, reject) {
-        var req = new XMLHttpRequest();
-        req.open(params.type, params.url);
+      var req = new XMLHttpRequest();
+      req.open(params.type, params.url);
 
-        req.onload = function() {
-          if (Math.floor(req.status / 100) == 2) {
-            resolve(req.response);
-          } else {
-            reject(req.statusText);
-          }
-        }
-
-        if (params.type == 'POST') {
-          req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        }
-        if (params.data === undefined) {
-          req.send();
+      req.onload = function() {
+        if (Math.floor(req.status / 100) == 2) {
+          resolve(req.response);
         } else {
-          req.send(params.data);
+          reject(req.statusText);
         }
-      });
-    ajaxProm.then(success).catch(fail);
+      }
+
+      if (params.type == 'POST') {
+        req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      }
+      if (params.data === undefined) {
+        req.send();
+      } else {
+        req.send(params.data);
+      }
+    });
+  ajaxProm.then(success).catch(fail);
+}
+
+miniQuery.ready = function(callback) {
+  if (document.readyState != 'loading') {
+    callback();
+  } else {
+    document.addEventListener('DOMContentReady', callback);
   }
+}
 
 var $ = miniQuery
