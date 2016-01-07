@@ -1,26 +1,96 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-  <script src="js/app.js"></script>
+
+  <!-- JavaScripts -->
+  <script src="js/miniQuery.js"></script>
+  <script src="js/handlebars-v4.0.5.js"></script>
+
   <title>SPABadge</title>
 </head>
+
 <body>
-  <div class="container">
-    <div class="logo">
-      <h1> SPA Badge </h1>
+  <!-- index template -->
+  <script id="students-index-template" type="text/template">
+    <h1>SF Copperheads</h1>
+
+    <ul>
+      {{#students}}
+        <li>
+          <a id="{{id}}" class="student-link" href="/students/{{id}}">{{name}}</a>
+        </li>
+      {{/students}}
+    </ul>
+  </script>
+
+  <!-- show template -->
+  <script id="students-show-template" type="text/template">
+    <h1>Words to be Remembered By</h1>
+    <div class="show-user">
+      <h2>{{student.name}}'s Badges</h2>
+      {{#badges}}
+        <div id="{{student.id}}" class="slogan">
+          <div class="body">{{@index}}) {{name}}</div>
+
+          <!-- upvote -->
+          <div class="vote-on">
+            <form action="#">
+              <input type="hidden" name="slogan_id" value="1">
+              <input type="hidden" name="vote_type" value="up">
+              <button class="up" type="submit" name="{{id}}">
+                <img src="img/upvote.gif" alt="upvote_image" />
+              </button>
+            </form>
+          </div>
+
+          <!-- downvote -->
+          <div class="vote-on">
+            <form action="#">
+              <input type="hidden" name="slogan_id" value="-1">
+              <button class="down" type="submit" name="submit">
+                  <img src="img/downvote.gif" alt="downvote_image" />
+              </button>
+            </form>
+          </div>
+
+          <div class="points">
+            ({{votes}} points)
+          </div>
+        </div>
+      {{/badges}}
+
+      <div class="add-badge">
+        <h3>Add a Badge:</h3>
+
+        <form id="add-badge-form" action="#">
+          <input type="hidden" name="student_id" value="{{student.id}}" />
+          <input type="text" name="content" />
+          <input type="image" src="img/add_button.png" alt="Add Slogan" />
+        </form>
+      </div>
     </div>
-    <h1> SF Teachers and Mentors </h1>
-      <ul>
-        <li><a href="#">Brick</a></li>
-        <li><a href="#">Hunter</li>
-        <li><a href="#">Jared</a></li>
-        <li><a href="#">Jen</a></li>
-        <li><a href="#">Jordan</a></li>
-        <li><a href="#">Julian</a></li>
-        <li><a href="#">Shambhavi</a></li>
-        <li><a href="#">Walker</a></li>
-        <li><a href="sample-page.html">Sample Page</a></li>
-      </ul>
+  </script>
+
+  <!-- layout -->
+  <div class="container">
+    <nav class="nav">
+      <span class="nav-link">
+        <a href="spa-badge.html"> HOME </a>
+      </span>
+    </nav>
+
+    <div class="logo">
+      <h1>SPA Badge</h1>
+    </div>
+
+    <!-- templates render here -->
+    <section id="content"></section>
   </div>
+
+  <!-- this is here so it loads last -->
+  <script src="js/app.js"></script>
 </body>
+
 </html>

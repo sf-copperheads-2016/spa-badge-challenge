@@ -1,0 +1,23 @@
+# SCHEMA
+
+Models: Students, Badges, Votes
+
+Relationships:
+Student has many Badges
+Badge belongs to Student
+
+Student has many Votes (as Voter)
+Vote belongs to Student (as Voter)
+
+Badge has many Votes
+Vote belongs to Badge
+
+Attributes:
+Student
+name
+
+Badge
+name
+
+Vote
+value
