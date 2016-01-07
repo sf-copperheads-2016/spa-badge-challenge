@@ -1,22 +1,20 @@
 $.ready(function() {
   var nameIdMap = {};
 
-  getTeachers();
+  setup();
 
-  window.onhashchange = checkHash;
+  function setup() {
+    getTeachers();
 
-  // set up handlebars helpers
-  Handlebars.registerHelper('toLowerCase', function(str) {
-    return str.toLowerCase();
-  });
+    window.onhashchange = checkHash;
 
-  function checkHash() {
-    var teacherName = location.hash.substring(1, location.hash.length);
-    if (nameIdMap.hasOwnProperty(teacherName)) {
-      getTeacher(nameIdMap[teacherName])
-    }
+    // set up handlebars helpers
+    Handlebars.registerHelper('toLowerCase', function(str) {
+      return str.toLowerCase();
+    });
   }
 
+  // retrieves the list of teachers and displays it
   function getTeachers() {
     $.ajax({
       type: 'GET',
@@ -37,11 +35,22 @@ $.ready(function() {
     });
   }
 
-  function setVoteListeners(teacher_id) {
+  // loads the page for the teacher who is in the url hash
+  function checkHash() {
+    var teacherName = location.hash.substring(1, location.hash.length);
+    if (nameIdMap.hasOwnProperty(teacherName)) {
+      getTeacher(nameIdMap[teacherName])
+    }
+  }
+
+
+  // send a vote to the server when the upvote/downvote buttons are clicked
+  function setVoteListeners(teacherId) {
     $('.vote').on('submit', function(event) {
       event.preventDefault();
       var formData = serializeFormData(this);
       var badgeId = formData.split('&')[0].split('=')[1];
+      // make sure this browser hasn't already voted
       if (alreadyVoted(badgeId)) {
         alert('you already voted!!');
       } else {
@@ -51,7 +60,7 @@ $.ready(function() {
           url: 'http://localhost:3000/badges/vote',
           data: formData,
           success: function(response) {
-            getTeacher(teacher_id);
+            getTeacher(teacherId);
           },
           fail: ajaxFailed
         });
@@ -59,13 +68,15 @@ $.ready(function() {
     });
   }
 
-  function alreadyVoted(badge_id) {
-    if (getCookie(badge_id)) {
+  // helper to determine if the user voted for that badge already
+  function alreadyVoted(badgeId) {
+    if (getCookie(badgeId)) {
       return true;
     }
     return false;
   }
 
+  // helper to get form data
   function serializeFormData(form) {
     var result = '';
     for (var i = 0; i < form.children.length; i++) {
@@ -81,13 +92,15 @@ $.ready(function() {
     return result.substring(0, result.length - 1);
   }
 
+  // load a teacher's page when the teacher's link on the home page is clicked
   function setTeacherListeners() {
     $('.teacher').on('click', function(event) {
       event.preventDefault();
-      getTeacher(this.getAttribute('teacher_id'));
+      getTeacher(this.getAttribute('teacherId'));
     });
   }
 
+  // logic to display the teachers list
   function displayTeachers(teachers) {
     $('#page-heading').innerText = 'SF Teachers and Mentors';
     $('#show-user').innerHTML = '';
@@ -100,6 +113,7 @@ $.ready(function() {
     $('#teacher-list').innerHTML = compiledHTML;
   }
 
+  // logic to display an individual teacher's page with badges
   function displayTeacherPage(teacher) {
     $('#page-heading').innerText = teacher.name + "'s Badges";
     $('#teacher-list').innerHTML = '';
@@ -114,6 +128,7 @@ $.ready(function() {
     $('#show-user').innerHTML = compiledHTML;
   }
 
+  // make the home button return to the original page
   function setHomeListener() {
     $('#home-button').on('click', function(event) {
       event.preventDefault();
@@ -122,41 +137,45 @@ $.ready(function() {
     });
   }
 
-  function getTeacher(teacher_id) {
+  // retrieve the data for an individual teacher's badges and display
+  function getTeacher(teacherId) {
     $.ajax({
       type: 'GET',
-      url: 'http://localhost:3000/teachers/' + teacher_id,
+      url: 'http://localhost:3000/teachers/' + teacherId,
       success: function(response) {
         teacher = JSON.parse(response);
         displayTeacherPage(teacher);
         setHomeListener();
-        setVoteListeners(teacher_id);
-        setCreationListener(teacher_id);
+        setVoteListeners(teacherId);
+        setCreationListener(teacherId);
       },
       fail: ajaxFailed
     })
   }
 
-  function setCreationListener(teacher_id) {
+  // logic to create a new badge
+  function setCreationListener(teacherId) {
     $('.add-badge').on('submit', function(event) {
       event.preventDefault();
       var formData = serializeFormData(this);
       $.ajax({
         type: 'POST',
-        url: 'http://localhost:3000/teachers/' + teacher_id + '/badges',
+        url: 'http://localhost:3000/teachers/' + teacherId + '/badges',
         data: formData,
         success: function(response) {
-          getTeacher(teacher_id);
+          getTeacher(teacherId);
         },
         fail: ajaxFailed
       });
     });
   }
 
+  // logic for ajax failure situation
   function ajaxFailed(response) {
     console.error(response);
   }
 
+  // utility function to write to a cookie
   // http://stackoverflow.com/questions/13154552/javascript-set-cookie-with-expire-time
   function writeCookie(key, value, days) {
     var date = new Date();
@@ -172,6 +191,7 @@ $.ready(function() {
     return value;
   }
 
+  // utility function to read from a cookie
   // http://stackoverflow.com/questions/10730362/get-cookie-by-name
   function getCookie(name) {
     var value = "; " + document.cookie;
