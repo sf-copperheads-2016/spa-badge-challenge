@@ -85,7 +85,7 @@ var miniQuery = function(selector) {
           el.addEventListener(eventName, callback, false)
         });
       } else {
-        callback.bind(el);
+        callback.bind(element);
         element.addEventListener(eventName, callback, false);
       }
     };

@@ -13,13 +13,56 @@
     </div>
     <h1 id='page-heading'> SF Teachers and Mentors </h1>
       <ul id="teacher-list">
-        <script id="teachers-template" type="text/x-handlebars-template">
-        {{#each teacher}}
-          <li><a href='#'>{{ name }}</a></li>
-        {{/each}}
-        </script>
-        <li><a href="sample-page.html">Sample Page</a></li>
       </ul>
+      <div id="show-user">
+      </div>
+      <div class="nav">
+        <span class="nav-link">
+          <a href="#" id="home-button"> HOME </a>
+        </span>
+      </div>
   </div>
+  <script id="teachers-template" type="text/x-handlebars-template">
+    {{#each teacher}}
+      <li><a href='#{{toLowerCase name }}' class="teacher" teacher_id="{{ id }}">{{ name }}</a></li>
+    {{/each}}
+  </script>
+  <script id="badges-template" type="text/x-handlebars-template">
+  <h2>Your Badges</h2>
+  {{#each badge}}
+    <div id="{{ id }}" class="slogan">
+      <div class="body">{{ phrase }}</div>
+      <div class="vote-on">
+        <form action="#" class="vote" method="post">
+          <input type="hidden" name="slogan_id" value={{ id }}>
+          <input type="hidden" name="vote_type" value="up">
+          <button class="up" type="submit" name="submit">
+            <img src="img/upvote.gif" alt="upvote_image" />
+          </button>
+        </form>
+      </div>
+      <div class="vote-on">
+        <form action="#" class="vote" method="post">
+          <input type="hidden" name="slogan_id" value={{ id }}>
+          <input type="hidden" name="vote_type" value="down">
+          <button class="up" type="submit" name="submit">
+            <img src="img/downvote.gif" alt="downvote_image" />
+          </button>
+        </form>
+      </div>
+
+      <div class="points">
+        {{ votes }} points
+      </div>
+    </div>
+  {{/each}}
+  <div>
+    <h3> Add a Badge: </h3>
+    <form action="#" class="add-badge" method="post">
+      <input type="text" name="phrase">
+      <input type="image" src="img/add_button.png" alt="Add Slogan">
+    </form>
+  </div>
+</script>
 </body>
 </html>

@@ -1,10 +1,4 @@
-Teacher.create(name: 'Anne')
-Teacher.create(name: 'Derek')
-Teacher.create(name: 'Hunter')
 Teacher.create(name: 'Julian')
-Teacher.create(name: 'Sarah')
-Teacher.create(name: 'Shambhavi')
-Teacher.create(name: 'Stu')
 Teacher.create(name: 'Walker')
 
 walker = Teacher.find_by(name: 'Walker')
