@@ -15,9 +15,10 @@ ActiveRecord::Schema.define(version: 20160105180737) do
 
   create_table "badges", force: :cascade do |t|
     t.string   "title"
-    t.integer  "vote_count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "vote_count", default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "student_id"
   end
 
   create_table "students", force: :cascade do |t|

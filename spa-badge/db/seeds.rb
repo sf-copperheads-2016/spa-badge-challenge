@@ -8,5 +8,9 @@
 
 
 10.times do
-  Student.create(name: Faker::Name.name)
+  Student.create!(name: Faker::Name.name)
+end
+
+10.times do
+  Badge.create!(title: Faker::Hacker.adjective, student_id: rand(1..10))
 end

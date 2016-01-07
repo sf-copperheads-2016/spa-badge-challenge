@@ -15,8 +15,9 @@ class StudentsController < ApplicationController
   end
 
   def show
-    find_student
-    render json: @student
+    find_anything
+    render json: @x
+    # render json: @badges
   end
 
   def update
@@ -37,6 +38,17 @@ class StudentsController < ApplicationController
   private
   def find_student
     @student = Student.find(params[:id])
+  end
+  def find_badges
+    @badges = Badge.find_by(student_id: params[:id])
+  end
+  def find_anything
+    find_student
+    find_badges
+    @x = []
+    @x << @student
+    @x << @badges
+    return @x
   end
 
   def student_params

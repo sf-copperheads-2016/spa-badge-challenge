@@ -4,6 +4,7 @@ class CreateBadges < ActiveRecord::Migration
       t.string :title
       t.integer :vote_count, default: 0
       t.timestamps null: false
+      t.references :student
     end
   end
 end
