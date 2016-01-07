@@ -96,7 +96,7 @@ $.ready(function() {
   function setTeacherListeners() {
     $('.teacher').on('click', function(event) {
       event.preventDefault();
-      getTeacher(this.getAttribute('teacherId'));
+      getTeacher(this.getAttribute('teacher_id'));
     });
   }
 
