@@ -1,0 +1,23 @@
+
+<html>
+  <head>
+    <script src="handlebars.js"></script>
+    <script src="js/miniQuery.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body>
+    <h1> SPA Badge </h1>
+    <h2>Copperhead Students</h2>
+    <div id="nameoutput">
+      <script id="person-template" type="text/x-handlebars-template">
+        <ul class="people_list">
+        {{#each person}}
+          <li><a href="#{{this.id}}">{{this.name}}</a></li>
+          <p id="{{this.id}}">{{this.name}}<br><span id="badges">Badges List</span><br><a href="file:///Users/apprentice/Desktop/spa-badge-challenge/client-side/index.hbs">Back</a></p>
+        {{/each}}
+        </ul>
+      </script>
+    </div>
+
+  </body>
+</html>
